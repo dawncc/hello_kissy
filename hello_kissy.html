@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>Hello KISSY </title>
+	<script src="http://g.tbcdn.cn/kissy/k/1.3.2/seed.js" data-config="{combine:true}"></script>
+</head>
+<body>
+	<button type="button" id="demo-btn" autocomplete="off">Click Me!</button>
+	<div class="demo-wrap">
+		<img id="demo-img" src="http://docs.kissyui.com/logo/logo.png" />
+		<h2 id="demo-txt">Hello KISSY, NOT KITTY!</h2>
+	</div>
+	<script>
+	KISSY.use('dom,event,anim', function(S, DOM, Event,Anim){
+		S.ready(function(){
+			var btn = DOM.get('#demo-btn');
+			Event.on(btn, 'click', function(){
+				DOM.attr(btn, 'disabled',true);
+				new Anim('#demo-img', {left:'400px', opacity: 0}, 2,'easeOut', function(){
+					new Anim('#demo-txt',
+						'left: 0; opacity: 1; fontSize: 28px',
+						2, 'bounceOut').run();
+				}).run();
+			});
+		});
+	});
+	</script>
+</body>
+</html>
